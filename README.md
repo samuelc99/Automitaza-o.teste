@@ -21,15 +21,60 @@ esse programa exige **1.000+ seguidores no TikTok e histórico de postagem
 nos últimos 180 dias** — não é uma barreira de código, é construção real de
 audiência (semanas/meses).
 
-Decisão: pausar a implementação de novas fases (Historical Intelligence,
-Offer Engine, etc.) até que exista uma conta TikTok elegível. Retomar o
-roadmap técnico quando esse pré-requisito for resolvido — ver BLUEPRINT.md
-para a sequência completa (Fase C em diante).
+Decisão: pausar a implementação das fases seguintes do BLUEPRINT.md
+(Historical Intelligence, Offer/Page Engine completos, etc.) até que exista
+uma conta TikTok elegível — **mas construir a própria ferramenta pra chegar
+lá é dentro do escopo**: ver "Content Engine" abaixo. É uma fatia pequena e
+independente do resto do roadmap (não abre a Fase D/E completas do
+Blueprint, só ataca especificamente o pré-requisito de 1.000 seguidores).
 
 Enquanto isso, Amazon Associates (integrado, `data/affiliate_2026-09-01.json`)
 e Magalu Parceiros/Lomadee (pesquisados, ainda não integrados — política de
 tráfego pago deles não foi confirmada publicamente) seguem como alternativas
 de comissão mais baixa mas sem essa barreira.
+
+## Content Engine (`src/poe/content/`)
+
+Gera um vídeo curto vertical (roteiro + B-roll + narração) a partir do
+`marketing_analysis` que o Opportunity Engine já pesquisou — **não** é
+automação de reaproveitar cortes de vídeo do YouTube (considerado e
+descartado: viola Termos do YouTube e direito autoral brasileiro, que não
+tem um conceito amplo de fair use, e ainda arrisca a própria conta TikTok
+que estamos tentando construir).
+
+- `script.py` — transforma hooks/objeções já pesquisados em cenas (hook →
+  fatos → objeção → CTA). Levanta erro se o candidato não tem
+  `marketing_analysis` — não inventa gancho novo.
+- `stock_footage.py` — `StockFootageProvider` (adapter), com `PexelsProvider`
+  e `PixabayProvider` — B-roll de uso comercial livre, sem exigência de
+  crédito, sem aprovação de conta.
+- `tts.py` — narração via `edge-tts` (vozes neurais gratuitas do Microsoft
+  Edge, sem conta/API key).
+- `video_builder.py` — monta o vídeo final via ffmpeg (baixa clipe, gera
+  narração, sobrepõe texto, concatena as cenas em 1080x1920).
+
+Uso:
+
+```bash
+# .env precisa de PEXELS_API_KEY ou PIXABAY_API_KEY (cadastro gratuito,
+# sem aprovação — ver .env.example)
+python -m poe.cli content data/evidence_2026-08-31.json "Bebedouro automático para gatos (fonte de água em movimento)"
+```
+
+**Postagem automática no TikTok:** a API oficial existe (Content Posting
+API), mas tanto `video.publish` (postar direto) quanto `video.upload`
+(rascunho) exigem "approval and authorization" segundo a documentação
+oficial — não ficou claro se isso é imediato pra conta própria em modo de
+desenvolvimento ou se é fila de auditoria (mesmo tipo de incerteza que
+travou o `/trends` do Mercado Livre por dias). **Não implementado ainda,
+não assumido que vai ser rápido.** Enquanto isso, o vídeo é gerado local e
+publicado manualmente no app.
+
+**Status de validação:** todo o código é testado com mocks (script,
+seleção de B-roll). O pipeline completo (ffmpeg, edge-tts) foi verificado
+manualmente nesta sessão — ffmpeg/ffprobe funcionam, edge-tts gera áudio
+real sem conta. **Ainda não rodou ponta a ponta com uma API key real do
+Pexels/Pixabay** — falta só isso pra validar de vez.
 
 ## Módulo 2 — Affiliate Economics Engine
 

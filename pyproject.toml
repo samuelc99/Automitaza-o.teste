@@ -2,7 +2,7 @@
 name = "product-opportunity-engine"
 version = "0.1.0"
 requires-python = ">=3.10"
-dependencies = ["PyYAML>=6.0", "python-dotenv>=1.0"]
+dependencies = ["PyYAML>=6.0", "python-dotenv>=1.0", "edge-tts>=6.1"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

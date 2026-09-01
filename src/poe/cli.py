@@ -87,6 +87,60 @@ def cmd_affiliate(args: argparse.Namespace) -> None:
             print(f"  ! {w}")
 
 
+def cmd_content(args: argparse.Namespace) -> None:
+    import os
+    import unicodedata
+
+    from poe.collectors.evidence_file import EvidenceFileCollector
+    from poe.content.script import ScriptGenerationError, build_script
+    from poe.content.stock_footage import PexelsProvider, PixabayProvider
+    from poe.content.tts import EdgeTTSProvider
+    from poe.content.video_builder import VideoBuildError, build_video
+
+    def normalize(text: str) -> str:
+        decomposed = unicodedata.normalize("NFKD", text)
+        return "".join(c for c in decomposed if not unicodedata.combining(c)).strip().lower()
+
+    candidates = EvidenceFileCollector(args.evidence_file).collect()
+    match = next((c for c in candidates if normalize(c.name) == normalize(args.candidate_name)), None)
+    if match is None:
+        print(f"Candidato '{args.candidate_name}' não encontrado em {args.evidence_file}.")
+        print("Candidatos disponíveis:")
+        for c in candidates:
+            print(f"  - {c.name}")
+        return
+
+    pexels_key = os.environ.get("PEXELS_API_KEY", "").strip()
+    pixabay_key = os.environ.get("PIXABAY_API_KEY", "").strip()
+    if not pexels_key and not pixabay_key:
+        print("PEXELS_API_KEY / PIXABAY_API_KEY não configurados no .env — veja .env.example.")
+        return
+
+    provider = PexelsProvider(pexels_key) if pexels_key else PixabayProvider(pixabay_key)
+
+    try:
+        script = build_script(match)
+    except ScriptGenerationError as e:
+        print(f"Erro ao gerar roteiro: {e}")
+        return
+
+    print(f"Roteiro gerado para '{match.name}': {len(script.scenes)} cenas.")
+    print(f"Buscando B-roll via {provider.name}, gerando narração e montando vídeo...")
+
+    try:
+        rendered = build_video(script, provider, EdgeTTSProvider(), args.out)
+    except VideoBuildError as e:
+        print(f"Erro ao montar vídeo: {e}")
+        return
+
+    print(f"\nVídeo salvo em: {rendered.output_path}")
+    print(f"Legenda sugerida: {rendered.caption}")
+    if rendered.warnings:
+        print("Avisos:")
+        for w in rendered.warnings:
+            print(f"  ! {w}")
+
+
 def cmd_history(args: argparse.Namespace) -> None:
     store = HistoryStore(args.db)
 
@@ -143,6 +197,14 @@ def main() -> None:
     p_aff.add_argument("evidence_file")
     p_aff.add_argument("affiliate_file")
     p_aff.set_defaults(func=cmd_affiliate)
+
+    p_content = sub.add_parser(
+        "content", help="Gera um vídeo curto (roteiro + B-roll + narração) a partir do marketing_analysis"
+    )
+    p_content.add_argument("evidence_file")
+    p_content.add_argument("candidate_name")
+    p_content.add_argument("--out", default="content_output/video.mp4")
+    p_content.set_defaults(func=cmd_content)
 
     args = parser.parse_args()
     args.func(args)
