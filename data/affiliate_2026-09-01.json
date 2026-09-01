@@ -1,0 +1,101 @@
+{
+  "_comment": "Comissões reais pesquisadas em 2026-09-01, tabela oficial de comissões do Amazon Associates Brasil (associados.amazon.com.br/help/node/topic/GRXPHT8U84RAYDXZ, confirmada via fetch direto na página). Cookie duration NÃO encontrado no acordo operacional consultado nesta sessão — marcado DESCONHECIDO em vez de chutar (não é 'sem dado' por preguiça, é 'procurei e não achei nesse documento').",
+  "offers": [
+    {
+      "match": {"candidate_name": "Bebedouro automático para gatos (fonte de água em movimento)"},
+      "network_name": "Amazon Associates Brasil",
+      "commission_type": "percentual",
+      "commission_percent": {
+        "value": 0.11,
+        "status": "CONFIRMADO",
+        "source_url": "https://associados.amazon.com.br/help/node/topic/GRXPHT8U84RAYDXZ",
+        "note": "Categoria 'Pet Shop' na tabela oficial de comissões."
+      },
+      "cookie_duration_days": {"value": null, "status": "DESCONHECIDO", "note": "Não encontrado no acordo operacional consultado."},
+      "epc_brl": {"value": null, "status": "DESCONHECIDO", "note": "Só existe com campanha própria rodando."},
+      "direct_costs_brl": {"value": null, "status": "DESCONHECIDO"},
+      "payout_terms": "Não verificado nesta sessão (documento consultado não detalhava).",
+      "restrictions": [],
+      "category": "pet / higiene e bem-estar animal",
+      "collected_at": "2026-09-01",
+      "source_url": "https://associados.amazon.com.br/help/node/topic/GRXPHT8U84RAYDXZ",
+      "source_name": "Amazon Associates Brasil (tabela oficial de comissões)"
+    },
+    {
+      "match": {"candidate_name": "Mini liquidificador portátil USB (garrafa/coqueteleira elétrica)"},
+      "network_name": "Amazon Associates Brasil",
+      "commission_type": "percentual",
+      "commission_percent": {
+        "value": 0.08,
+        "status": "CONFIRMADO",
+        "source_url": "https://associados.amazon.com.br/help/node/topic/GRXPHT8U84RAYDXZ",
+        "note": "Categoria 'Cozinha' na tabela oficial de comissões."
+      },
+      "cookie_duration_days": {"value": null, "status": "DESCONHECIDO"},
+      "epc_brl": {"value": null, "status": "DESCONHECIDO"},
+      "direct_costs_brl": {"value": null, "status": "DESCONHECIDO"},
+      "restrictions": [],
+      "category": "cozinha / eletroportátil pessoal",
+      "collected_at": "2026-09-01",
+      "source_url": "https://associados.amazon.com.br/help/node/topic/GRXPHT8U84RAYDXZ",
+      "source_name": "Amazon Associates Brasil (tabela oficial de comissões)"
+    },
+    {
+      "match": {"candidate_name": "Sérum facial vitamina C (linha nacional acessível)"},
+      "network_name": "Amazon Associates Brasil",
+      "commission_type": "percentual",
+      "commission_percent": {
+        "value": 0.13,
+        "status": "CONFIRMADO",
+        "source_url": "https://associados.amazon.com.br/help/node/topic/GRXPHT8U84RAYDXZ",
+        "note": "Categoria 'Beleza' na tabela oficial de comissões."
+      },
+      "cookie_duration_days": {"value": null, "status": "DESCONHECIDO"},
+      "epc_brl": {"value": null, "status": "DESCONHECIDO"},
+      "direct_costs_brl": {"value": null, "status": "DESCONHECIDO"},
+      "restrictions": [],
+      "category": "beleza / skincare",
+      "collected_at": "2026-09-01",
+      "source_url": "https://associados.amazon.com.br/help/node/topic/GRXPHT8U84RAYDXZ",
+      "source_name": "Amazon Associates Brasil (tabela oficial de comissões)"
+    },
+    {
+      "match": {"candidate_name": "Rolo/massageador facial Gua Sha (quartzo rosa ou jade)"},
+      "network_name": "Amazon Associates Brasil",
+      "commission_type": "percentual",
+      "commission_percent": {
+        "value": 0.13,
+        "status": "CONFIRMADO",
+        "source_url": "https://associados.amazon.com.br/help/node/topic/GRXPHT8U84RAYDXZ",
+        "note": "Categoria 'Beleza' na tabela oficial de comissões."
+      },
+      "cookie_duration_days": {"value": null, "status": "DESCONHECIDO"},
+      "epc_brl": {"value": null, "status": "DESCONHECIDO"},
+      "direct_costs_brl": {"value": null, "status": "DESCONHECIDO"},
+      "restrictions": [],
+      "category": "beleza / autocuidado",
+      "collected_at": "2026-09-01",
+      "source_url": "https://associados.amazon.com.br/help/node/topic/GRXPHT8U84RAYDXZ",
+      "source_name": "Amazon Associates Brasil (tabela oficial de comissões)"
+    },
+    {
+      "match": {"candidate_name": "Mop giratório 360° (rodo mágico com balde espremedor)"},
+      "network_name": "Amazon Associates Brasil",
+      "commission_type": "percentual",
+      "commission_percent": {
+        "value": 0.08,
+        "status": "CONFIRMADO",
+        "source_url": "https://associados.amazon.com.br/help/node/topic/GRXPHT8U84RAYDXZ",
+        "note": "Categoria 'Casa' na tabela oficial de comissões (produto de limpeza doméstica, classificação mais próxima)."
+      },
+      "cookie_duration_days": {"value": null, "status": "DESCONHECIDO"},
+      "epc_brl": {"value": null, "status": "DESCONHECIDO"},
+      "direct_costs_brl": {"value": null, "status": "DESCONHECIDO"},
+      "restrictions": [],
+      "category": "casa / limpeza",
+      "collected_at": "2026-09-01",
+      "source_url": "https://associados.amazon.com.br/help/node/topic/GRXPHT8U84RAYDXZ",
+      "source_name": "Amazon Associates Brasil (tabela oficial de comissões)"
+    }
+  ]
+}

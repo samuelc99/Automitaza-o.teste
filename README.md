@@ -5,6 +5,47 @@ Sistema de descoberta e pontuação de oportunidades de produto para e-commerce
 achismo: toda conclusão é rastreável até uma evidência rotulada como DADO,
 ESTIMATIVA, INFERÊNCIA ou HIPÓTESE.
 
+Este projeto é o Módulo 1 (Opportunity Engine) de uma visão maior — ver
+**[BLUEPRINT.md](BLUEPRINT.md)** para a arquitetura completa do Affiliate
+Commerce Engine e o roteiro de evolução (Fases A-K).
+
+## Módulo 2 — Affiliate Economics Engine
+
+Responde "se eu gerar uma venda desse produto, quanto ganho de comissão?"
+(ver BLUEPRINT.md, Seção 8). Pacote `src/poe/affiliate/`:
+
+- `models.py` — `TrackedValue` (número + status CONFIRMADO/ESTIMADO/DESCONHECIDO,
+  nunca um valor sem procedência), `CommissionInfo`, `CommissionEstimate`
+- `network.py` — `AffiliateNetwork`, adaptador abstrato (Seção 47) — hoje só
+  existe implementação manual, pelo mesmo motivo do Opportunity Engine:
+  nenhum programa de afiliado testado (Amazon Associates, AliExpress
+  Affiliate, Shopee Affiliate) dá acesso programático sem aprovação prévia
+  com histórico de vendas/tráfego
+- `manual_source.py` — `AffiliateInfoFileCollector`, carrega comissões de um
+  JSON pesquisado via WebSearch em tabelas **públicas** de comissão (essas
+  tabelas, ao contrário do acesso à API, geralmente são públicas)
+- `economics.py` — calcula comissão bruta e líquida, propagando o status
+  mais fraco entre os campos usados (se um custo é desconhecido, o líquido
+  também fica desconhecido, nunca vira um valor inventado)
+
+Uso:
+
+```bash
+python -m poe.cli affiliate data/evidence_2026-08-31.json data/affiliate_2026-09-01.json
+```
+
+**Achado real da primeira rodada (2026-09-01, dados confirmados na tabela
+oficial de comissões do Amazon Associates Brasil):** comissão bruta de
+R$3,88 a R$6,83 por venda nos 5 candidatos com oferta encontrada (8-13% dos
+preços de R$47-82). Isso é criticamente apertado para sustentar qualquer
+CAC de tráfego pago — a Seção 3 do Blueprint pergunta exatamente isso
+("qual oportunidade gera comissão lucrativa através de tráfego que
+conseguimos adquirir?"), e a resposta preliminar é que o modelo de afiliado
+puro nesses produtos específicos pode não fechar a conta, mesmo que o
+Opportunity Engine os pontue bem para revenda direta. Vale investigar
+programas com comissão fixa mais alta ou categorias com % maior antes de
+escolher uma oportunidade para testar tráfego real.
+
 ## Por que não há um scraper automático
 
 Antes de escrever código, testamos conectividade e política de robôs dos

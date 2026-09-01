@@ -14,6 +14,7 @@ import sys
 from poe.config_env import load_env
 from poe.pipeline.run import run_pipeline
 from poe.storage.db import HistoryStore
+from poe.affiliate.models import DataStatus
 
 
 def cmd_run(args: argparse.Namespace) -> None:
@@ -51,6 +52,39 @@ def cmd_run(args: argparse.Namespace) -> None:
             f"  {sp.score.final_total:6.1f} pts | {sp.confidence.value:6s} | "
             f"{sp.candidate.name} {status}{reason}"
         )
+
+
+def cmd_affiliate(args: argparse.Namespace) -> None:
+    from poe.affiliate.manual_source import AffiliateInfoFileCollector
+    from poe.affiliate.run import build_affiliate_offers
+    from poe.collectors.evidence_file import EvidenceFileCollector
+
+    candidates = EvidenceFileCollector(args.evidence_file).collect()
+    network = AffiliateInfoFileCollector(args.affiliate_file)
+    offers, warnings = build_affiliate_offers(candidates, network)
+
+    print(f"\n=== Affiliate Economics ({len(offers)}/{len(candidates)} candidatos com oferta encontrada) ===\n")
+    for offer in offers:
+        est = offer.estimate
+        gross = f"R${est.gross_commission_brl:.2f}" if est.gross_commission_brl is not None else "?"
+        net = f"R${est.net_commission_brl:.2f}" if est.net_commission_brl is not None else "?"
+        badge = {
+            DataStatus.CONFIRMADO: "CONFIRMADO",
+            DataStatus.ESTIMADO: "ESTIMADO",
+            DataStatus.DESCONHECIDO: "DESCONHECIDO",
+        }[est.status]
+        print(f"  {offer.candidate.name}")
+        print(f"    Rede: {offer.commission.network_name} | Status: {badge}")
+        print(f"    Comissão bruta: {gross} | líquida: {net}")
+        print(f"    Base do cálculo: {est.basis}")
+        if offer.commission.restrictions:
+            print(f"    Restrições: {'; '.join(offer.commission.restrictions)}")
+        print()
+
+    if warnings:
+        print("--- Sem oferta de afiliado encontrada ---")
+        for w in warnings:
+            print(f"  ! {w}")
 
 
 def cmd_history(args: argparse.Namespace) -> None:
@@ -102,6 +136,13 @@ def main() -> None:
 
     p_hist = sub.add_parser("history", help="Consulta o histórico acumulado")
     p_hist.set_defaults(func=cmd_history)
+
+    p_aff = sub.add_parser(
+        "affiliate", help="Calcula comissão bruta/líquida por candidato a partir de um arquivo de comissões"
+    )
+    p_aff.add_argument("evidence_file")
+    p_aff.add_argument("affiliate_file")
+    p_aff.set_defaults(func=cmd_affiliate)
 
     args = parser.parse_args()
     args.func(args)

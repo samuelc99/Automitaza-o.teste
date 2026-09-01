@@ -1,0 +1,49 @@
+{
+  "_comment": "Termos de comissão de afiliado, pesquisados via WebSearch em tabelas PÚBLICAS de comissão dos programas (ex: página de comissões do Amazon Associates, AliExpress Affiliate, Shopee Affiliate, Awin, Lomadee). NUNCA invente um número — se não achar, use status DESCONHECIDO e value null.",
+  "offers": [
+    {
+      "_comment": "match por candidate_name (nome exato do candidato no arquivo de evidências) tem prioridade; category é usado como fallback.",
+      "match": {
+        "candidate_name": "Nome exato do ProductCandidate, OU deixe vazio e use category",
+        "category": "categoria (fallback se candidate_name não bater)"
+      },
+      "network_name": "Nome do programa de afiliado (ex: Amazon Associates)",
+      "commission_type": "percentual | fixo | misto",
+      "commission_percent": {
+        "value": 0.08,
+        "status": "CONFIRMADO | ESTIMADO | DESCONHECIDO",
+        "source_url": "https://... (obrigatório se status=CONFIRMADO)",
+        "note": "ex: categoria 'Pet Products' na tabela pública de comissões"
+      },
+      "commission_fixed_brl": {
+        "value": null,
+        "status": "DESCONHECIDO"
+      },
+      "cookie_duration_days": {
+        "value": 24,
+        "status": "CONFIRMADO",
+        "source_url": "https://..."
+      },
+      "epc_brl": {
+        "value": null,
+        "status": "DESCONHECIDO",
+        "note": "EPC real só existe depois de campanha própria rodando — não é pesquisável publicamente"
+      },
+      "direct_costs_brl": {
+        "value": null,
+        "status": "DESCONHECIDO",
+        "note": "ex: taxa de conversão de moeda, deduções antes do payout, se documentadas"
+      },
+      "payout_terms": "ex: pagamento mensal, mínimo de saque R$50, via transferência/PIX",
+      "restrictions": [
+        "ex: proibido lance em palavras-chave de marca (branded bidding)",
+        "ex: cloaking proibido",
+        "ex: disclosure de afiliado obrigatório"
+      ],
+      "category": "categoria do produto, para uso como fallback de match",
+      "collected_at": "2026-09-01",
+      "source_url": "https://... (página de comissões consultada)",
+      "source_name": "nome da fonte"
+    }
+  ]
+}
