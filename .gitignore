@@ -3,5 +3,8 @@ __pycache__/
 *.pyc
 .pytest_cache/
 *.egg-info/
-data/history.db
 data/logs/
+
+# data/history.db É VERSIONADO DE PROPÓSITO (não ignorado): é o estado
+# persistente entre execuções do agente na nuvem, que clona o repo do zero
+# a cada run. Cada execução agendada deve dar commit/push nele no final.
