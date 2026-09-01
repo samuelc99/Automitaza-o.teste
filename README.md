@@ -9,6 +9,28 @@ Este projeto é o Módulo 1 (Opportunity Engine) de uma visão maior — ver
 **[BLUEPRINT.md](BLUEPRINT.md)** para a arquitetura completa do Affiliate
 Commerce Engine e o roteiro de evolução (Fases A-K).
 
+## Status estratégico atual (2026-09-01)
+
+**Roadmap técnico pausado de propósito** após a Fase B.5 (Affiliate Market
+Discovery, pesquisa ad-hoc, não virou módulo de código). Achado: a melhor
+oportunidade de afiliado para promoção via TikTok é o **TikTok Shop
+Affiliate/Creator Program** (nativo da plataforma, comissão 8-15%, podendo
+passar disso em produtos que o vendedor quer empurrar — bem melhor que os
+R$3,88-6,83/venda que a Amazon Associates dá nos candidatos atuais). Mas
+esse programa exige **1.000+ seguidores no TikTok e histórico de postagem
+nos últimos 180 dias** — não é uma barreira de código, é construção real de
+audiência (semanas/meses).
+
+Decisão: pausar a implementação de novas fases (Historical Intelligence,
+Offer Engine, etc.) até que exista uma conta TikTok elegível. Retomar o
+roadmap técnico quando esse pré-requisito for resolvido — ver BLUEPRINT.md
+para a sequência completa (Fase C em diante).
+
+Enquanto isso, Amazon Associates (integrado, `data/affiliate_2026-09-01.json`)
+e Magalu Parceiros/Lomadee (pesquisados, ainda não integrados — política de
+tráfego pago deles não foi confirmada publicamente) seguem como alternativas
+de comissão mais baixa mas sem essa barreira.
+
 ## Módulo 2 — Affiliate Economics Engine
 
 Responde "se eu gerar uma venda desse produto, quanto ganho de comissão?"
