@@ -1,0 +1,782 @@
+{
+  "_run_notes": "Evidências coletadas via WebSearch/WebFetch em 2026-08-31 (Mercado Livre/Amazon/Shopee não foram raspados diretamente - ver README). Onde a atribuição exata da fonte primária dentro de um resultado agregado de busca não pôde ser confirmada, isso está declarado explicitamente na 'note' de cada evidência.",
+  "candidates": [
+    {
+      "name": "Bebedouro automático para gatos (fonte de água em movimento)",
+      "category": "pet / higiene e bem-estar animal",
+      "seed_keyword": "bebedouro automático gato",
+      "price_brl": {
+        "min": 37.6,
+        "max": 75.77,
+        "type": "DADO",
+        "source_url": "https://lista.mercadolivre.com.br/bebedouro-pet-automatico",
+        "note": "Preços de 3 modelos (Furacão Pet, Petlon, Mec Pet/Amicus) obtidos via busca web em anúncios ativos no Mercado Livre; não conferidos diretamente pelo agente na página nesta sessão (ver README - ML bloqueia scraping direto)."
+      },
+      "evidences": [
+        {
+          "dimension": "demanda",
+          "claim": "Mercado pet brasileiro entre os 3 maiores do mundo, movimentando dezenas de bilhões de reais, com múltiplas marcas estabelecidas vendendo bebedouros automáticos (Furacão Pet, Petlon, Mec Pet, Amicus) no Mercado Livre.",
+          "type": "DADO",
+          "strength": 0.65,
+          "source_name": "GG Contabilidade",
+          "source_url": "https://ggcontabilidade.com/crescimento-mercado-pet/",
+          "note": "Presença de múltiplas marcas estabelecidas é usada como proxy de demanda validada, não é uma métrica de vendas direta."
+        },
+        {
+          "dimension": "crescimento",
+          "claim": "Buscas por 'bebedouro automático' aumentaram cerca de 132% mês a mês no Brasil, segundo dados de Google Trends citados por fonte secundária do setor pet.",
+          "type": "DADO",
+          "strength": 0.55,
+          "source_name": "Qualy Distribuidora (citando Google Trends)",
+          "source_url": "https://qualydistribuidora.com.br/os-produtos-pet-mais-vendidos-no-nordeste/",
+          "note": "Não verificamos o gráfico original do Google Trends nesta sessão (endpoint bloqueado para agentes de IA, ver README) — número reportado por uma fonte secundária, não pela fonte primária."
+        },
+        {
+          "dimension": "crescimento",
+          "claim": "Mercado pet brasileiro projeta crescimento de 9,6% em 2026, movimentação superior a R$80 bilhões.",
+          "type": "DADO",
+          "strength": 0.6,
+          "source_name": "GG Contabilidade",
+          "source_url": "https://ggcontabilidade.com/crescimento-mercado-pet/"
+        },
+        {
+          "dimension": "concorrencia",
+          "claim": "Levantamento adicional (2026-08-31, rodada 2) identificou pelo menos 9 marcas ativas no Mercado Livre (Furacão Pet, Petlon, Mec Pet, Amicus, Kavju, Minnasa, Truqys, Aquapet, Petzdoll), faixa de preço de R$39,99 (básico) a R$134,99 (Kavju) e até R$269,90-291,98 em modelos premium — confirma fragmentação de mercado sem marca dominante clara.",
+          "type": "DADO",
+          "strength": 0.6,
+          "source_name": "Busca agregada Mercado Livre (rodada 2)",
+          "source_url": "https://lista.mercadolivre.com.br/bebedouro-automatico-gatos",
+          "collected_at": "2026-08-31"
+        },
+        {
+          "dimension": "concorrencia",
+          "claim": "Existem várias marcas concorrentes (Furacão Pet, Petlon, Mec Pet, Amicus) mas nenhuma claramente dominante; preços variam de forma ampla (R$37,60 a R$75,77+), sugerindo espaço para diferenciação por design/capacidade/silêncio de operação.",
+          "type": "INFERENCIA",
+          "strength": 0.55,
+          "source_name": "Mercado Livre (busca)",
+          "source_url": "https://lista.mercadolivre.com.br/bebedouro-pet-automatico"
+        },
+        {
+          "dimension": "margem",
+          "claim": "Margem estimada em ~13% sobre preço de venda de R$55, considerando custo do produto (30%), frete, taxas de marketplace e publicidade — ver margin_analysis para premissas completas.",
+          "type": "ESTIMATIVA",
+          "strength": 0.3,
+          "note": "Margem apertada nas premissas usadas; sensível a variação de CPA de anúncio."
+        },
+        {
+          "dimension": "logistica",
+          "claim": "Produto pequeno/médio com motor e bomba d'água — requer embalagem cuidadosa mas não é excessivamente pesado nem volumoso para envio padrão.",
+          "type": "INFERENCIA",
+          "strength": 0.6
+        },
+        {
+          "dimension": "marketing",
+          "claim": "Produto resolve um problema real e emocionalmente relevante para donos de gato (saúde renal/hidratação), é altamente demonstrável em vídeo (gato bebendo da fonte) e gera conteúdo naturalmente compartilhável.",
+          "type": "INFERENCIA",
+          "strength": 0.75
+        },
+        {
+          "dimension": "risco",
+          "claim": "Riscos limitados: fragilidade leve do motor/plástico e margem apertada nas premissas estimadas; nenhum risco regulatório, de propriedade intelectual ou de saturação extrema identificado.",
+          "type": "INFERENCIA",
+          "strength": 0.6
+        }
+      ],
+      "risk_flags": [
+        {
+          "name": "produto_fragil",
+          "description": "Contém motor/bomba d'água pequena; requer embalagem cuidadosa.",
+          "severity": "baixa"
+        },
+        {
+          "name": "margem_muito_baixa",
+          "description": "Margem estimada ~13% nas premissas usadas (ver margin_analysis) — sensível a custos de aquisição/anúncio reais.",
+          "severity": "baixa"
+        }
+      ],
+      "hard_flags": [],
+      "notes": "Nenhuma reclamação recorrente de consumidores foi levantada nesta sessão (não foram coletadas avaliações reais) — dados insuficientes para confirmar reclamações comuns.",
+      "marketing_analysis": {
+        "hooks": [
+          "Seu gato quase não bebe água? Isso pode ser sinal de um problema sério.",
+          "Água parada x água corrente: veja a diferença no comportamento do seu gato em tempo real.",
+          "Menos visitas ao veterinário por problema renal começa com um detalhe simples."
+        ],
+        "first_second": "Corte rápido mostrando um gato ignorando uma tigela de água parada, cortando para o mesmo gato bebendo animadamente da fonte em movimento.",
+        "objections": [
+          {
+            "objection": "Faz barulho?",
+            "response": "Vídeo com som ambiente normal, destacando operação silenciosa do modelo."
+          },
+          {
+            "objection": "É difícil de limpar?",
+            "response": "Vídeo curto desmontando e lavando as peças em menos de 1 minuto."
+          }
+        ]
+      },
+      "competition_analysis": {
+        "seller_count_note": "Múltiplas marcas ativas no Mercado Livre (pelo menos 4 identificadas); volume exato de anunciantes não coletado nesta sessão.",
+        "price_range_note": "R$37,60 a R$75,77 nos 3 modelos observados; faixa mais ampla não confirmada.",
+        "common_complaints": [],
+        "differentiation_opportunities": [
+          "Redução de ruído do motor",
+          "Maior capacidade do reservatório",
+          "Filtro trocável incluso"
+        ]
+      },
+      "margin_analysis": {
+        "preco_venda": 55.0,
+        "custo_produto_estimado": 16.5,
+        "frete_estimado": 13.0,
+        "taxas_marketplace_estimadas": 7.15,
+        "publicidade_estimada": 8.25,
+        "outros_custos": 3.0,
+        "margem_estimada": 7.1,
+        "premissas": [
+          "Custo do produto estimado em 30% do preço de venda (heurística comum para produto com componente eletrônico simples — NÃO verificado com fornecedor real).",
+          "Frete estimado em R$13 para item pequeno/médio.",
+          "Taxa de marketplace estimada em 13% do preço de venda (faixa comum no Mercado Livre 'clássico').",
+          "Custo de publicidade estimado em 15% do preço de venda (CPA aproximado para produto de consideração média).",
+          "Outros custos (embalagem/operacional) estimados em R$3."
+        ]
+      }
+    },
+    {
+      "name": "Mini liquidificador portátil USB (garrafa/coqueteleira elétrica)",
+      "category": "cozinha / eletroportátil pessoal",
+      "seed_keyword": "mini liquidificador portátil usb",
+      "price_brl": {
+        "min": 63.99,
+        "max": 99.9,
+        "type": "DADO",
+        "source_url": "https://www.amazon.com.br/mini-liquidificador-portatil-usb/s?k=mini+liquidificador+portatil+usb",
+        "note": "Faixa típica praticada pela maioria dos vendedores (Amazon/Americanas). Modelos premium chegam a R$219, mas não representam a maioria das ofertas — por isso não foram usados como referência (Seção 4)."
+      },
+      "evidences": [
+        {
+          "dimension": "demanda",
+          "claim": "Milhares de listagens ativas em múltiplos grandes varejistas (Americanas: 3.618 produtos na categoria; Magazine Luiza: 7.668 resultados para 'mini liquidificador').",
+          "type": "DADO",
+          "strength": 0.7,
+          "source_name": "Americanas / Magazine Luiza (busca)",
+          "source_url": "https://www.americanas.com.br/busca/mini-liquidificador-portatil-usb"
+        },
+        {
+          "dimension": "crescimento",
+          "claim": "Citado como produto de destaque em blog de tendências de dropshipping para 2026 (utensílios inovadores para cozinha, eletroportáteis de conveniência), mas sem número de crescimento de vendas ou busca associado.",
+          "type": "INFERENCIA",
+          "strength": 0.3,
+          "source_name": "Adminer Blog",
+          "source_url": "https://adminer.pro/blog/produtos-vencedores-para-2026-tend%C3%AAncias-estrat%C3%A9gias-e-5-exemplos-reais-para-come%C3%A7ar-agora",
+          "note": "Categoria é evergreen (existe há anos) — pode estar estável, não necessariamente em alta agora. Dados insuficientes para confirmar crescimento recente."
+        },
+        {
+          "dimension": "concorrencia",
+          "claim": "Alto volume de concorrentes ativos em pelo menos 5 grandes varejistas (Americanas, Amazon, Magalu, Mercado Livre, Leroy Merlin) sugere mercado saturado e commoditizado, com pouca diferenciação entre ofertas.",
+          "type": "DADO",
+          "strength": 0.65,
+          "source_name": "Busca agregada (múltiplos varejistas)",
+          "source_url": "https://www.magazineluiza.com.br/busca/mini+liquidificador/"
+        },
+        {
+          "dimension": "margem",
+          "claim": "Margem estimada em ~20% sobre preço de venda de R$82 — ver margin_analysis para premissas.",
+          "type": "ESTIMATIVA",
+          "strength": 0.55
+        },
+        {
+          "dimension": "logistica",
+          "claim": "Compacto e leve, cabe em bolsa/mochila; porém contém lâmina e bateria de lítio recarregável via USB, o que pode implicar restrições/custos extras de envio (especialmente internacional/aéreo).",
+          "type": "INFERENCIA",
+          "strength": 0.5
+        },
+        {
+          "dimension": "marketing",
+          "claim": "Alto potencial de demonstração visual (bater fruta/gelo na hora, uso em academia/trabalho/viagem); apelo de conveniência é fácil de comunicar em vídeo curto.",
+          "type": "INFERENCIA",
+          "strength": 0.7
+        },
+        {
+          "dimension": "risco",
+          "claim": "Principal risco é a saturação do mercado e a dificuldade de diferenciação — tecnicamente é um produto simples e robusto, sem risco regulatório relevante identificado.",
+          "type": "INFERENCIA",
+          "strength": 0.4
+        }
+      ],
+      "risk_flags": [
+        {
+          "name": "mercado_saturado",
+          "description": "Milhares de listagens ativas em pelo menos 5 grandes varejistas brasileiros.",
+          "severity": "alta"
+        },
+        {
+          "name": "dificuldade_diferenciacao",
+          "description": "Produto commoditizado, funcionalmente quase idêntico entre marcas.",
+          "severity": "media"
+        },
+        {
+          "name": "dificuldade_envio",
+          "description": "Contém bateria de lítio — pode ter restrições/custos extras em alguns modais de envio.",
+          "severity": "baixa"
+        }
+      ],
+      "hard_flags": [],
+      "notes": "Dados insuficientes para confirmar reclamações recorrentes de consumidores (não coletadas nesta sessão).",
+      "marketing_analysis": {
+        "hooks": [
+          "Leve seu shake para qualquer lugar sem depender de tomada.",
+          "De mochila à academia: pronto em 30 segundos.",
+          "Chega de liquidificador gigante ocupando a bancada."
+        ],
+        "first_second": "Pessoa saindo apressada de casa, pega o mini liquidificador já pronto da bolsa e bebe no caminho.",
+        "objections": [
+          {
+            "objection": "Bate gelo ou fruta congelada de verdade?",
+            "response": "Mostrar teste real batendo cubos de gelo/fruta congelada em vídeo."
+          },
+          {
+            "objection": "A bateria dura o suficiente?",
+            "response": "Informar autonomia declarada pelo fabricante e nº de usos por carga."
+          }
+        ]
+      },
+      "competition_analysis": {
+        "seller_count_note": "Milhares de anúncios somados entre os principais varejistas (não é uma contagem de vendedores únicos, e sim de listagens).",
+        "price_range_note": "R$63,99 a R$99,90 na maioria das ofertas; modelos premium até R$219,00.",
+        "common_complaints": [],
+        "differentiation_opportunities": [
+          "Maior autonomia de bateria",
+          "Copo com escala de medida",
+          "Design/cores diferenciadas"
+        ]
+      },
+      "margin_analysis": {
+        "preco_venda": 82.0,
+        "custo_produto_estimado": 24.6,
+        "frete_estimado": 15.0,
+        "taxas_marketplace_estimadas": 10.66,
+        "publicidade_estimada": 12.3,
+        "outros_custos": 3.0,
+        "margem_estimada": 16.44,
+        "premissas": [
+          "Custo do produto estimado em 30% do preço de venda — NÃO verificado com fornecedor real.",
+          "Frete estimado em R$15 (item com motor/copo, um pouco mais de peso/volume).",
+          "Taxa de marketplace estimada em 13%.",
+          "Publicidade estimada em 15% do preço de venda.",
+          "Outros custos estimados em R$3."
+        ]
+      }
+    },
+    {
+      "name": "Sérum facial vitamina C (linha nacional acessível)",
+      "category": "beleza / skincare",
+      "seed_keyword": "sérum vitamina C",
+      "price_brl": {
+        "min": 14.0,
+        "max": 80.0,
+        "type": "DADO",
+        "source_url": "https://amoprodutinhos.com.br/melhor-serum-vitamina-c/",
+        "note": "Faixa de marcas nacionais acessíveis (Max Love R$14, Garnier R$58, Principia R$58, Melano CC R$80). Marcas importadas premium (La Roche-Posay R$163, ISDIN R$139) ficam fora ou no limite da faixa de R$150 e não foram usadas como referência principal."
+      },
+      "evidences": [
+        {
+          "dimension": "demanda",
+          "claim": "Segmento de perfumaria/cosméticos teve alta de 24,5% em volume de pedidos no e-commerce brasileiro em 2024, entre os que mais cresceram no período.",
+          "type": "DADO",
+          "strength": 0.45,
+          "source_name": "Relatório de mercado de e-commerce Brasil (agregado)",
+          "source_url": "https://paymentscmi.com/insights/brazil-e-commerce-market/",
+          "note": "Estatística veio de uma resposta agregada de busca sobre múltiplas fontes; não foi possível confirmar qual documento exato contém o número original — atribuição parcial."
+        },
+        {
+          "dimension": "demanda",
+          "claim": "Sérum com ácido ascórbico (vitamina C) é citado como o produto de maior destaque do TikTok Shop Brasil em listas de produtos virais de skincare, com menção a 'milhões de views' em reviews — número exato não confirmado.",
+          "type": "INFERENCIA",
+          "strength": 0.35,
+          "source_name": "Cupom Online / TikTok (busca agregada)",
+          "note": "Claim de 'milhões de views' não foi verificado diretamente em um vídeo específico nesta sessão."
+        },
+        {
+          "dimension": "crescimento",
+          "claim": "Viralização recente no TikTok sugere momentum de curto prazo, mas não há dado numérico de crescimento de vendas/busca ao longo do tempo para confirmar tendência sustentada.",
+          "type": "HIPOTESE",
+          "strength": 0.3
+        },
+        {
+          "dimension": "concorrencia",
+          "claim": "Mercado tem marcas nacionais estabelecidas (Garnier, Avon, Principia, Renew) e importadas premium (Payot, Adcos, La Roche-Posay, ISDIN), além de opção genérica de entrada (Max Love R$14) — concorrência de marca é forte na faixa média/alta.",
+          "type": "DADO",
+          "strength": 0.5,
+          "source_url": "https://amoprodutinhos.com.br/melhor-serum-vitamina-c/"
+        },
+        {
+          "dimension": "margem",
+          "claim": "Margem estimada em ~13% sobre preço de venda de R$45 — ver margin_analysis. Revenda de marca já estabelecida tende a ter margem mais apertada que produto de marca própria.",
+          "type": "ESTIMATIVA",
+          "strength": 0.3
+        },
+        {
+          "dimension": "logistica",
+          "claim": "Frasco pequeno de vidro/plástico, leve e fácil de enviar; risco de vazamento em transporte se a vedação/embalagem for inadequada.",
+          "type": "INFERENCIA",
+          "strength": 0.6
+        },
+        {
+          "dimension": "marketing",
+          "claim": "Formato 'antes/depois' e rotina de skincare tem forte tradição de viralização em vídeo curto; fácil de gerar conteúdo recorrente (ex: 'dia 1 a dia 14').",
+          "type": "INFERENCIA",
+          "strength": 0.7
+        },
+        {
+          "dimension": "risco",
+          "claim": "Cosméticos exigem notificação/conformidade com ANVISA; produto tem risco subjetivo de resultado (reclamações de 'não funcionou'/irritação são comuns na categoria) e forte concorrência de marca — soma de riscos moderada.",
+          "type": "INFERENCIA",
+          "strength": 0.35
+        }
+      ],
+      "risk_flags": [
+        {
+          "name": "alto_risco_devolucao",
+          "description": "Resultado subjetivo (percepção de eficácia) e possibilidade de irritação/reação alérgica.",
+          "severity": "media"
+        },
+        {
+          "name": "produto_regulamentado",
+          "description": "Cosméticos requerem notificação/conformidade com a ANVISA.",
+          "severity": "baixa"
+        },
+        {
+          "name": "dominado_por_grandes_marcas",
+          "description": "Marcas estabelecidas (Garnier, Avon, Payot, Adcos, La Roche-Posay) concentram a atenção do consumidor na faixa média/alta.",
+          "severity": "media"
+        },
+        {
+          "name": "margem_muito_baixa",
+          "description": "Margem estimada ~13% nas premissas usadas — revenda de marca conhecida tende a ter margem apertada.",
+          "severity": "baixa"
+        }
+      ],
+      "hard_flags": [],
+      "notes": "Dados insuficientes para confirmar reclamações recorrentes reais de consumidores desta categoria (não coletadas nesta sessão). Recomenda-se checar avaliações reais antes de decidir.",
+      "marketing_analysis": {
+        "hooks": [
+          "Antes e depois de 14 dias usando isso todo dia de manhã.",
+          "O 'segredo' de skincare que custa menos de R$50.",
+          "Pele opaca? Pode ser falta de um ingrediente específico."
+        ],
+        "first_second": "Close-up aplicando o sérum com textura visível, seguido de uma foto 'antes' da pele.",
+        "objections": [
+          {
+            "objection": "Funciona mesmo ou é só marketing?",
+            "response": "Mostrar resultado real de uso próprio ao longo de semanas, com data visível, e depoimentos verificáveis."
+          },
+          {
+            "objection": "Pode causar alergia?",
+            "response": "Orientar teste de sensibilidade em pequena área antes do uso e citar composição completa."
+          }
+        ]
+      },
+      "competition_analysis": {
+        "seller_count_note": "Não coletado (número de anunciantes em ML/Shopee não confirmado nesta sessão).",
+        "price_range_note": "R$14 (nacional genérico) a R$163 (importado premium); faixa acessível concentrada entre R$14-80.",
+        "common_complaints": [],
+        "differentiation_opportunities": [
+          "Embalagem/kit combinando sérum + protetor solar",
+          "Conteúdo educativo sobre concentração de ativo (%)"
+        ]
+      },
+      "margin_analysis": {
+        "preco_venda": 45.0,
+        "custo_produto_estimado": 13.5,
+        "frete_estimado": 10.0,
+        "taxas_marketplace_estimadas": 5.85,
+        "publicidade_estimada": 6.75,
+        "outros_custos": 3.0,
+        "margem_estimada": 5.9,
+        "premissas": [
+          "Custo do produto estimado em 30% do preço de venda — NÃO verificado com fornecedor/fabricante real.",
+          "Frete estimado em R$10 (item pequeno e leve).",
+          "Taxa de marketplace estimada em 13%.",
+          "Publicidade estimada em 15% do preço de venda.",
+          "Outros custos estimados em R$3."
+        ]
+      }
+    },
+    {
+      "name": "Rolo/massageador facial Gua Sha (quartzo rosa ou jade)",
+      "category": "beleza / autocuidado",
+      "seed_keyword": "massageador facial gua sha",
+      "price_brl": {
+        "min": 15.0,
+        "max": 90.0,
+        "type": "DADO",
+        "source_url": "https://www.magazineluiza.com.br/busca/massageador+facial+gua+sha/",
+        "note": "Faixa de R$15 a R$259 observada no Magazine Luiza; usamos R$15-90 como faixa representativa da maioria das ofertas, excluindo kits premium de marca (ex: Océane) que puxam a média para cima."
+      },
+      "evidences": [
+        {
+          "dimension": "demanda",
+          "claim": "Categoria 'Rollers Faciais' tem lista própria de mais vendidos na Amazon Brasil (bestsellers), indicando volume de vendas suficiente para a Amazon manter um ranking dedicado.",
+          "type": "DADO",
+          "strength": 0.7,
+          "source_name": "Amazon.com.br Mais Vendidos - Beleza",
+          "source_url": "https://www.amazon.com.br/gp/bestsellers/beauty/16754584011"
+        },
+        {
+          "dimension": "crescimento",
+          "claim": "Produto já é descrito como 'sucesso nos últimos anos' em conteúdo de skincare, sem número de crescimento recente — pode já estar em fase de maturidade/estabilidade, não necessariamente em alta.",
+          "type": "HIPOTESE",
+          "strength": 0.25,
+          "note": "Dados insuficientes para confirmar se a demanda ainda está crescendo ou já estabilizou/está em leve queda."
+        },
+        {
+          "dimension": "concorrencia",
+          "claim": "Ampla faixa de preço (R$15 a R$259) com muitos vendedores em múltiplas plataformas (Amazon, Magalu, marcas próprias como Océane) sugere mercado saturado e altamente commoditizado.",
+          "type": "DADO",
+          "strength": 0.6,
+          "source_url": "https://www.magazineluiza.com.br/busca/massageador+facial+gua+sha/"
+        },
+        {
+          "dimension": "margem",
+          "claim": "Margem estimada em ~17,6% sobre preço de venda de R$45 — ver margin_analysis.",
+          "type": "ESTIMATIVA",
+          "strength": 0.5
+        },
+        {
+          "dimension": "logistica",
+          "claim": "Pedra/plástico pequeno e leve, muito fácil de armazenar e enviar; baixíssimo risco de dano em trânsito comparado a eletrônicos.",
+          "type": "INFERENCIA",
+          "strength": 0.8
+        },
+        {
+          "dimension": "marketing",
+          "claim": "Extremamente demonstrável em vídeo (rotina de skincare, efeito visual imediato de drenagem/relaxamento), forte presença orgânica em conteúdo de autocuidado.",
+          "type": "INFERENCIA",
+          "strength": 0.75
+        },
+        {
+          "dimension": "risco",
+          "claim": "Risco técnico/regulatório muito baixo (produto físico simples), mas risco comercial alto pela saturação e baixíssima diferenciação — praticamente todo vendedor oferece o mesmo item.",
+          "type": "INFERENCIA",
+          "strength": 0.35
+        }
+      ],
+      "risk_flags": [
+        {
+          "name": "mercado_saturado",
+          "description": "Ampla faixa de preço e múltiplos vendedores/marcas oferecendo produto quase idêntico.",
+          "severity": "alta"
+        },
+        {
+          "name": "dificuldade_diferenciacao",
+          "description": "Produto genérico, difícil de diferenciar sem investimento de marca.",
+          "severity": "alta"
+        },
+        {
+          "name": "tendencia_passageira",
+          "description": "Sem evidência de crescimento recente; pode já estar em fase de maturidade.",
+          "severity": "baixa"
+        }
+      ],
+      "hard_flags": [],
+      "notes": "Dados insuficientes para confirmar reclamações recorrentes de consumidores (não coletadas nesta sessão).",
+      "marketing_analysis": {
+        "hooks": [
+          "A rotina de 2 minutos que virou hábito diário.",
+          "Isso substitui uma massagem facial de R$150.",
+          "Por que essa pedrinha está em todo vídeo de skincare."
+        ],
+        "first_second": "Pessoa fazendo a rotina de gua sha no rosto em câmera lenta, com foco na textura da pele.",
+        "objections": [
+          {
+            "objection": "Realmente reduz inchaço?",
+            "response": "Mostrar comparação de antes/depois imediato (efeito temporário real de drenagem)."
+          },
+          {
+            "objection": "É só uma pedra cara?",
+            "response": "Explicar o ritual/uso combinado com óleo facial e a técnica correta de aplicação."
+          }
+        ]
+      },
+      "competition_analysis": {
+        "seller_count_note": "Não coletado com precisão; múltiplos vendedores confirmados em pelo menos 2 grandes varejistas.",
+        "price_range_note": "R$15 a R$259 (Magazine Luiza); grande dispersão indica commoditização.",
+        "common_complaints": [],
+        "differentiation_opportunities": [
+          "Kit com guia de uso/vídeo incluso",
+          "Material premium certificado (jade/quartzo genuíno vs pintado)"
+        ]
+      },
+      "margin_analysis": {
+        "preco_venda": 45.0,
+        "custo_produto_estimado": 13.5,
+        "frete_estimado": 8.0,
+        "taxas_marketplace_estimadas": 5.85,
+        "publicidade_estimada": 6.75,
+        "outros_custos": 3.0,
+        "margem_estimada": 7.9,
+        "premissas": [
+          "Custo do produto estimado em 30% do preço de venda — NÃO verificado com fornecedor real.",
+          "Frete estimado em R$8 (item muito leve e pequeno).",
+          "Taxa de marketplace estimada em 13%.",
+          "Publicidade estimada em 15% do preço de venda.",
+          "Outros custos estimados em R$3."
+        ]
+      }
+    },
+    {
+      "name": "Fone de ouvido com condução óssea (linha de entrada)",
+      "category": "eletrônicos / áudio esportivo",
+      "seed_keyword": "fone condução óssea",
+      "price_brl": {
+        "min": 63.0,
+        "max": 140.0,
+        "type": "DADO",
+        "source_url": "https://lista.mercadolivre.com.br/fone-de-ouvido-condu%C3%A7%C3%A3o-%C3%B3ssea",
+        "note": "Modelo de entrada com Bluetooth e IPX4 encontrado por R$63 no Mercado Livre; a maioria das opções nacionais custa mais, chegando a R$1.441 em modelos premium — usamos a faixa de entrada/intermediária como referência por estar dentro do limite de R$150."
+      },
+      "evidences": [
+        {
+          "dimension": "demanda",
+          "claim": "Acessórios de áudio (incluindo fones) são citados entre as categorias em alta no e-commerce brasileiro em 2026.",
+          "type": "DADO",
+          "strength": 0.4,
+          "source_name": "Accio (agregador B2B de sourcing)",
+          "source_url": "https://www.accio.com/business/top-selling-products-in-brazil",
+          "note": "Fonte é um agregador B2B de sourcing, com possível viés promocional em favor de categorias vendáveis — tratado com cautela."
+        },
+        {
+          "dimension": "crescimento",
+          "claim": "Não foi encontrado dado numérico de crescimento específico para o nicho de condução óssea (distinto de fones bluetooth genéricos).",
+          "type": "HIPOTESE",
+          "strength": 0.2,
+          "note": "Dados insuficientes para confirmar crescimento do nicho específico."
+        },
+        {
+          "dimension": "concorrencia",
+          "claim": "Nicho de condução óssea tem visivelmente menos opções listadas que fones bluetooth genéricos convencionais, mas já está presente em múltiplos grandes varejistas (Mercado Livre, Amazon, Magalu, Americanas).",
+          "type": "INFERENCIA",
+          "strength": 0.5
+        },
+        {
+          "dimension": "margem",
+          "claim": "Margem estimada em ~26% sobre preço de venda de R$100 — a mais alta entre os candidatos analisados nesta rodada. Ver margin_analysis.",
+          "type": "ESTIMATIVA",
+          "strength": 0.6,
+          "note": "Estimativa otimista: categoria de eletrônicos genéricos sofre pressão de preço de concorrência asiática (AliExpress/1688), não avaliada diretamente nesta sessão por bloqueio de acesso — margem real pode ser menor."
+        },
+        {
+          "dimension": "logistica",
+          "claim": "Pequeno e leve, fácil de enviar; contém bateria de lítio, com as mesmas ressalvas de restrição de envio de outros eletrônicos pequenos.",
+          "type": "INFERENCIA",
+          "strength": 0.55
+        },
+        {
+          "dimension": "marketing",
+          "claim": "Diferencial funcional claro (não tampa o ouvido — segurança para corredores/ciclistas) facilita um hook específico, diferente de fones genéricos.",
+          "type": "INFERENCIA",
+          "strength": 0.65
+        },
+        {
+          "dimension": "risco",
+          "claim": "Categoria eletrônica sofre pressão de preço e cópias genéricas baratas; qualidade de áudio percebida pode gerar devoluções se abaixo da expectativa.",
+          "type": "INFERENCIA",
+          "strength": 0.45
+        }
+      ],
+      "risk_flags": [
+        {
+          "name": "mercado_saturado",
+          "description": "Categoria de áudio em geral é muito disputada, mesmo que o nicho específico seja menor.",
+          "severity": "media"
+        },
+        {
+          "name": "dependencia_de_marca",
+          "description": "Consumidor tende a confiar mais em marcas conhecidas para produtos ligados à audição/segurança.",
+          "severity": "baixa"
+        }
+      ],
+      "hard_flags": [],
+      "notes": "Dados insuficientes para confirmar volume de vendas real ou reclamações recorrentes específicas do nicho (não coletadas nesta sessão).",
+      "marketing_analysis": {
+        "hooks": [
+          "Corri 10km e ainda ouvi o carro chegando — veja por quê.",
+          "Fone que não tampa o ouvido: sim, isso existe.",
+          "Pare de perder fone de ouvido caindo durante o treino."
+        ],
+        "first_second": "Pessoa correndo na rua com o fone visível, um carro passando ao fundo — legenda 'ainda consigo ouvir tudo'.",
+        "objections": [
+          {
+            "objection": "O som é bom mesmo sem tampar o ouvido?",
+            "response": "Comparação de qualidade sonora em ambiente controlado vs. fone comum."
+          },
+          {
+            "objection": "Cai fácil durante o treino?",
+            "response": "Teste de uso durante treino intenso, mostrando fixação/estabilidade."
+          }
+        ]
+      },
+      "competition_analysis": {
+        "seller_count_note": "Não coletado com precisão; presente em pelo menos 4 grandes varejistas nacionais.",
+        "price_range_note": "R$63 (entrada) a R$1.441 (premium); maioria das opções relevantes ao limite de preço fica entre R$63-140.",
+        "common_complaints": [],
+        "differentiation_opportunities": [
+          "Foco em nicho esportivo/segurança (corrida, ciclismo urbano)",
+          "Garantia estendida para reduzir objeção de qualidade"
+        ]
+      },
+      "margin_analysis": {
+        "preco_venda": 100.0,
+        "custo_produto_estimado": 30.0,
+        "frete_estimado": 13.0,
+        "taxas_marketplace_estimadas": 13.0,
+        "publicidade_estimada": 15.0,
+        "outros_custos": 3.0,
+        "margem_estimada": 26.0,
+        "premissas": [
+          "Custo do produto estimado em 30% do preço de venda — NÃO verificado com fornecedor real; categoria eletrônica pode ter custo real maior ou menor dependendo do fornecedor.",
+          "Frete estimado em R$13.",
+          "Taxa de marketplace estimada em 13%.",
+          "Publicidade estimada em 15% do preço de venda.",
+          "Outros custos estimados em R$3."
+        ]
+      }
+    },
+    {
+      "name": "Mop giratório 360° (rodo mágico com balde espremedor)",
+      "category": "casa / limpeza",
+      "seed_keyword": "rodo mágico mop giratório 360",
+      "price_brl": {
+        "min": 25.73,
+        "max": 71.28,
+        "type": "DADO",
+        "source_url": "https://lista.mercadolivre.com.br/mop-magico-giratorio",
+        "note": "Faixa observada em 4 anúncios reais no Mercado Livre (rodada 2, 2026-08-31), incluindo preços já com desconto aplicado."
+      },
+      "evidences": [
+        {
+          "dimension": "demanda",
+          "claim": "Modelo \"123ÚTIL Flat Mop Esfregão Giratório 360º\" marcado como \"mais vendido\", com 4.583 avaliações e nota 4/5 em anúncio ativo no Mercado Livre.",
+          "type": "DADO",
+          "strength": 0.8,
+          "source_name": "Mercado Livre (busca)",
+          "source_url": "https://lista.mercadolivre.com.br/mop-magico-giratorio",
+          "collected_at": "2026-08-31",
+          "value": 4583.0,
+          "unit": "avaliações no anúncio",
+          "methodology": "Contagem de avaliações de um anúncio específico, usada como proxy de volume de vendas — não é o número real de unidades vendidas, mas é bem mais direto que presença de marca."
+        },
+        {
+          "dimension": "demanda",
+          "claim": "Outro anúncio do mesmo tipo de produto (\"Mop Giratório Limpeza Esfregão Rodo Mágico 360 Lava Seca\") reporta mais de 500 vendas e nota 4.1/5.",
+          "type": "DADO",
+          "strength": 0.65,
+          "source_name": "Mercado Livre (anúncio MLB20918896)",
+          "source_url": "https://www.mercadolivre.com.br/mop-giratorio-limpeza-esfrego-rodo-magico-360-lava-seca/p/MLB20918896",
+          "collected_at": "2026-08-31"
+        },
+        {
+          "dimension": "crescimento",
+          "claim": "Categoria de mops/rodos giratórios é citada como campeã de vendas recorrente em listas de produtos de organização/limpeza doméstica de baixo custo, mas não foi encontrado dado numérico de crescimento recente específico.",
+          "type": "INFERENCIA",
+          "strength": 0.35,
+          "note": "Dados insuficientes para confirmar se a demanda está crescendo ou se é um produto já maduro/estável (categoria existe há vários anos no e-commerce brasileiro)."
+        },
+        {
+          "dimension": "concorrencia",
+          "claim": "Pelo menos 5 variações/marcas identificadas em uma única busca (123CLEAN, 123ÚTIL, e outras sem marca clara), com múltiplos anúncios de alto volume de avaliações competindo entre si — mercado provavelmente saturado e commoditizado.",
+          "type": "DADO",
+          "strength": 0.55,
+          "source_name": "Mercado Livre (busca)",
+          "source_url": "https://lista.mercadolivre.com.br/mop-magico-giratorio"
+        },
+        {
+          "dimension": "margem",
+          "claim": "Margem estimada em ~9% sobre preço de venda de R$45 — ver margin_analysis.",
+          "type": "ESTIMATIVA",
+          "strength": 0.35
+        },
+        {
+          "dimension": "logistica",
+          "claim": "Produto de plástico/microfibra, leve mas volumoso (cabo longo, ~1m), pode ter custo de frete maior que itens pequenos por causa do formato, não do peso.",
+          "type": "INFERENCIA",
+          "strength": 0.55
+        },
+        {
+          "dimension": "marketing",
+          "claim": "Alto potencial de demonstração visual (satisfação de limpeza, giro automático, antes/depois de piso sujo) — categoria clássica de vídeo \"produto satisfatório\" nas redes.",
+          "type": "INFERENCIA",
+          "strength": 0.7
+        },
+        {
+          "dimension": "risco",
+          "claim": "Risco técnico/regulatório muito baixo; principal risco é saturação e concorrência de preço, sem diferenciação clara entre os concorrentes.",
+          "type": "INFERENCIA",
+          "strength": 0.4
+        }
+      ],
+      "risk_flags": [
+        {
+          "name": "mercado_saturado",
+          "description": "Múltiplos concorrentes com alto volume de avaliações competindo diretamente, produto commoditizado.",
+          "severity": "alta"
+        },
+        {
+          "name": "dificuldade_diferenciacao",
+          "description": "Funcionalmente quase idêntico entre marcas — giro 360, balde espremedor, microfibra.",
+          "severity": "media"
+        },
+        {
+          "name": "dificuldade_envio",
+          "description": "Formato longo/volumoso pode encarecer o frete apesar do peso baixo.",
+          "severity": "baixa"
+        }
+      ],
+      "hard_flags": [],
+      "notes": "Candidato adicionado na rodada 2 de pesquisa (2026-08-31), com evidência de demanda mais forte (contagem de avaliações reais) que a maioria dos candidatos da rodada 1.",
+      "marketing_analysis": {
+        "hooks": [
+          "Esse chão estava assim há quanto tempo? (antes/depois)",
+          "Limpar a casa em metade do tempo, sem molhar a mão.",
+          "O balde que espreme sozinho — via giro, não força."
+        ],
+        "first_second": "Close-up do mop girando rápido no balde espremedor, água suja escorrendo — corte pro piso brilhando.",
+        "objections": [
+          {
+            "objection": "Realmente seca bem ou fica água no chão?",
+            "response": "Mostrar teste real de secagem cronometrado."
+          },
+          {
+            "objection": "A refil dura quanto tempo?",
+            "response": "Informar durabilidade média declarada e custo de reposição."
+          }
+        ]
+      },
+      "competition_analysis": {
+        "seller_count_note": "Pelo menos 5 variações de marca/modelo identificadas numa única busca; volume real de vendedores não confirmado.",
+        "price_range_note": "R$25,73 a R$71,28 nos 4 anúncios observados (rodada 2).",
+        "common_complaints": [],
+        "differentiation_opportunities": [
+          "Refil de microfibra de maior durabilidade",
+          "Cabo mais curto/leve para facilidade de manuseio"
+        ]
+      },
+      "margin_analysis": {
+        "preco_venda": 45.0,
+        "custo_produto_estimado": 13.5,
+        "frete_estimado": 12.0,
+        "taxas_marketplace_estimadas": 5.85,
+        "publicidade_estimada": 6.75,
+        "outros_custos": 3.0,
+        "margem_estimada": 3.9,
+        "premissas": [
+          "Custo do produto estimado em 30% do preço de venda — NÃO verificado com fornecedor real.",
+          "Frete estimado em R$12 (formato volumoso apesar de leve).",
+          "Taxa de marketplace estimada em 13%.",
+          "Publicidade estimada em 15% do preço de venda.",
+          "Outros custos estimados em R$3."
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "_comment": "Template para coleta de evidências. Preencha com dados REAIS encontrados via WebSearch/WebFetch, sempre com source_url quando existir. Nunca invente número/claim.",
+  "candidates": [
+    {
+      "name": "Nome específico do produto (não a categoria genérica)",
+      "category": "categoria/subcategoria",
+      "seed_keyword": "termo de busca usado para encontrar este candidato",
+      "price_brl": {
+        "min": 0.0,
+        "max": 0.0,
+        "type": "DADO",
+        "source_url": "https://...",
+        "note": "de onde veio esse preço (ex: preço médio observado em N anúncios)"
+      },
+      "evidences": [
+        {
+          "dimension": "demanda | crescimento | concorrencia | margem | logistica | marketing | risco",
+          "claim": "afirmação específica, factual, sem exagero",
+          "type": "DADO | ESTIMATIVA | INFERENCIA | HIPOTESE",
+          "strength": 0.5,
+          "source_name": "nome da fonte",
+          "source_url": "https://... (obrigatório quando type=DADO)",
+          "collected_at": "2026-08-31",
+          "note": "premissas, se for ESTIMATIVA",
+          "value": "opcional: o número por trás do claim, se houver (ex: 132.0)",
+          "unit": "opcional: unidade do value (ex: '% crescimento a/a')",
+          "methodology": "opcional: como o value foi obtido/calculado"
+        }
+      ],
+      "risk_flags": [
+        {
+          "name": "chave que exista em config.yaml -> penalties (ex: produto_fragil)",
+          "description": "explicação específica",
+          "severity": "baixa | media | alta"
+        }
+      ],
+      "hard_flags": [],
+      "notes": "observações livres",
+      "marketing_analysis": {
+        "hooks": ["hook 1", "hook 2", "hook 3"],
+        "first_second": "descrição do primeiro segundo do anúncio",
+        "objections": [
+          {"objection": "objeção do consumidor", "response": "como o anúncio responde"}
+        ]
+      },
+      "competition_analysis": {
+        "seller_count_note": "estimativa qualitativa e fonte",
+        "price_range_note": "faixa de preço observada entre concorrentes",
+        "common_complaints": ["reclamação recorrente 1", "reclamação recorrente 2"],
+        "differentiation_opportunities": ["oportunidade 1"]
+      },
+      "margin_analysis": {
+        "preco_venda": 0.0,
+        "custo_produto_estimado": 0.0,
+        "frete_estimado": 0.0,
+        "taxas_marketplace_estimadas": 0.0,
+        "publicidade_estimada": 0.0,
+        "outros_custos": 0.0,
+        "margem_estimada": 0.0,
+        "premissas": ["liste toda premissa usada no cálculo"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+# Product Opportunity Engine - configuração central
+# Ajuste pesos/limites aqui em vez de hardcodar no código.
+
+price:
+  hard_limit_brl: 150.0        # requisito obrigatório - acima disso, produto é eliminado
+  preferred_min_brl: 30.0      # faixa preferida (não elimina fora dela, apenas não bonifica)
+  preferred_max_brl: 120.0
+
+scoring:
+  weights:
+    demanda: 25
+    crescimento: 20
+    concorrencia: 15
+    margem: 15
+    logistica: 10
+    marketing: 10
+    risco: 5
+  # pontuação mínima de risco = 5 - penalidade (nunca negativo)
+
+penalties:
+  # cada penalidade é subtraída do score final (não do sub-score), até um teto.
+  # O valor abaixo é o peso "média severidade" (severidade baixa = x0.5, alta = x1.5;
+  # ver RiskFlag.severity e SEVERITY_MULTIPLIER em scoring/penalties.py).
+  mercado_saturado: 15
+  margem_muito_baixa: 15
+  produto_fragil: 8
+  produto_pesado: 8
+  alto_risco_devolucao: 10
+  necessidade_suporte_tecnico: 8
+  dependencia_de_marca: 10
+  risco_propriedade_intelectual: 20
+  produto_regulamentado: 20
+  dificuldade_envio: 8
+  tendencia_passageira: 12
+  dominado_por_grandes_marcas: 10
+  dificuldade_diferenciacao: 8
+  max_total_penalty: 60   # trava - nunca deixa o score ir a zero só por penalidades somadas
+
+elimination:
+  # produtos com qualquer uma dessas flags são removidos do ranking antes do score final
+  hard_flags:
+    - price_above_limit
+    - produto_ilegal_ou_proibido
+    - risco_juridico_grave
+
+confidence:
+  # confiança calculada pela proporção de evidências tipo DADO vs INFERENCIA/HIPOTESE
+  # e pelo número de fontes independentes usadas
+  min_sources_for_alta: 3
+  min_dado_ratio_for_alta: 0.5
+  min_sources_for_media: 2
